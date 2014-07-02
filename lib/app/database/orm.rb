@@ -11,11 +11,12 @@ module MyApp
       # What tables would you like to build? 
     end
 
-    def self.orm
-      @__a_instance ||= ORM.new
-    end
-    
   end
+
+  def self.orm
+    @__a_instance ||= ORM.new
+  end
+    
 end
 
 
