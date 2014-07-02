@@ -14,7 +14,8 @@ module MyApp
     def self.orm
       @__a_instance ||= ORM.new
     end
-
+    
+  end
 end
 
 
