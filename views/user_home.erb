@@ -2,3 +2,25 @@
   <input type='submit' class="button" value='Logout'>
 </form>
 
+I AM @BOOK: <%= @book %>
+
+</br>
+<hr>
+</br>
+
+<form method='post' action='/'>
+  <input type='hidden' value='<%= @id %>' name='id'>
+  <input type='hidden' value='<%= @title %>' name='title'>
+  <input type='hidden' value='<%= @category %>' name='category'>
+  <input type='hidden' value='<%= @authors %>' name='authors'>
+  <input type='hidden' value='<%= @picture %>' name='picture'>
+  <input type='radio' name="interest" value="true">Yes
+  <input type='radio' name="interest" value="false">No
+  <input type='submit' class="button">
+</form>
+
+</br>
+<hr>
+</br>
+
+ I AM PARAMS: <%= params %>

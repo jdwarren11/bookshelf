@@ -2,7 +2,7 @@ module BOOK
   class Books
 
 
-    def initialize(id, category, title, author, photo)
+    def initialize(book_id, category, title, author, photo, id=nil)
       @id = id
       @category = category
       @title = title
@@ -10,7 +10,11 @@ module BOOK
       @photo = photo
     end
 
-    
+    def create!
+      id_from_db = BOOK.orm.create_book(@book_id, @category, @title, @author, @photo)
+      @id = id_from_db
+      self
+    end
 
 
   end

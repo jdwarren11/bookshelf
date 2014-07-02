@@ -27,7 +27,8 @@ module BOOK
       self
     end
 
-    def update_bookshelf
+    def get_bookshelf
+      @bookshelf = BOOK.orm.get_books_by_user_id()
     end
 
   end
