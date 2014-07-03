@@ -31,18 +31,10 @@
 
 </br>
 <hr>
-</br>
-
-<!-- <form method='post' action='/'>
-  <input type='hidden' value='<%= @api_id %>' name='api_id'>
-  <input type='hidden' value='<%= @title %>' name='title'>
-  <input type='hidden' value='<%= @category %>' name='category'>
-  <input type='hidden' value='<%= @authors %>' name='authors'>
-  <input type='hidden' value='<%= @picture %>' name='picture'>
-
-    <button type='submit' class="button" name="interest" value="false">I no like</button>
-    <button type='submit' class="button" name="interest" value="true" >I like</button>
-
-</form> -->
+<h2>MY BOOKSHELF</h2>
+<hr>
+  <% @pics.each do |pic| %>
+      <img src="<%= pic %>"/>
+  <% end %>
 
 <!--  I AM PARAMS: <%= params %>

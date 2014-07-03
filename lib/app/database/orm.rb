@@ -55,14 +55,22 @@ module BOOK
         ], [u_id, category, api_id, interest])
     end
 
-    def get_user_bookshelf_by_id(user_id)
+    def get_user_bookshelf_by_id(u_id)
       response = @db.exec_params(%Q[
         SELECT * FROM bookshelf
-        WHERE id = #{user_id};
-        ])
+        WHERE user_id = ($1) and interest = true;
+        ], [u_id])
 
+      response
     end
 
+    def get_pic_by_api(api)
+      response = @db.exec_params(%Q[
+        SELECT * FROM books
+        WHERE api_id = ($1)
+        ], [api])
+      response.first["photo"]
+    end
 
 
 

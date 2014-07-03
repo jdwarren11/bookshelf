@@ -28,6 +28,17 @@ get '/' do
       new_book.create!
     end
 
+    @pics = []
+    @bookshelf = BOOK.orm.get_user_bookshelf_by_id(session[:user_id])
+    @bookshelf.each do |x|
+      api_id = x["api_id"]
+    
+      picture = BOOK.orm.get_pic_by_api(api_id)
+      @pics <<picture
+    end
+    
+
+
 
 
     # user chooses
