@@ -1,9 +1,28 @@
+h1, h2, h3, h5, span {
+    font-family: "Futura";
+}
+
 .button.like {
     margin-top: 4rem;
     background-color: red;
    
 }
 
+#top {
+    padding: 0;
+    margin-top: 1.5rem;
+    font-size: 4rem;
+}
+
 .row.main {
     margin-top: 3rem;
 }
+
+#log {
+    margin-top: 0.8rem;
+    background: white;
+    border: 1px solid black;
+    font-family: "Futura";
+    color: black;
+}
+

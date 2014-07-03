@@ -17,24 +17,16 @@
     </style>
   </head>
   <body>
-
-    <header class="row">
-      <%= erb :header %>
-    </header>
-
+    <section class="row">
+<!--       <div> -->
+        <%= yield %>
+<!--       </div> -->
+    </section>
     <section class="row">
       <div>
-          <%= yield %>
-      </div>
-
-    </section>
-
-    <section class="row">
-      <div>
-          <%= erb :bookshelf %>
+        <%= erb :bookshelf %>
       </div>
     </section>
-
     <script>$(document).foundation();</script>
   </body>
 </html>

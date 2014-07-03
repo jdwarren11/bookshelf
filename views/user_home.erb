@@ -1,5 +1,19 @@
 <!-- I AM @BOOK: <%= @book %> -->
+<div class="row">
+  <div class="large-3 columns" id="top">
+    <span>bookworm</span>
+  </div>
+
+  <div class="large-3 flow-opposite columns">
+    <form method='post' action='/signout'>
+      <input type='submit' class="button right" id="log" value='Logout'>
+    </form>
+  </div>
+
+</div>
+
 <hr>
+
 <div class="row main">
   <div class="large-6 large-centered text-center columns">
     <div class="row swipe">
@@ -31,7 +45,7 @@
 
 </br>
 <hr>
-<h2>MY BOOKSHELF</h2>
+<h2>My Bookshelf</h2>
 <hr>
   <% @pics.each do |pic| %>
       <img src="<%= pic %>"/>
