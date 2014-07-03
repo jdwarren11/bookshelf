@@ -1,12 +1,8 @@
-<!-- I AM @BOOK: <%= @book %> -->
 <div class="row">
   <div class="large-8 columns" id="top">
     <span>bookworm</span>
     <img src="../images/bookworm.jpg" id ="top_pic">
   </div>
-<!--   <div class="large-3 columns">
-    
-  </div> -->
 
   <div class="large-3 flow-opposite columns">
     <form method='post' action='/signout'>
@@ -20,6 +16,7 @@
 
 <div class="row main">
   <div class="large-6 large-centered text-center columns">
+    <h2>Interested?</h2>
     <div class="row swipe">
       <div class="large-4 columns">
         <form method='post' action='/'>
@@ -54,5 +51,3 @@
   <% @pics.each do |pic| %>
       <img src="<%= pic %>"/>
   <% end %>
-
-<!--  I AM PARAMS: <%= params %>
