@@ -13,7 +13,7 @@ module BOOK
         return { :success? => false, :error => :invalid_password }
       end
 
-      return { :success? => true, :user_id => user.id }
+      return { :success? => true, :user_id => user.id, :username => user.username}
 
     end
     

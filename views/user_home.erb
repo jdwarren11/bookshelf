@@ -49,7 +49,7 @@
 
 </br>
 <hr>
-<h2>My Bookshelf</h2>
+<h2><%= session[:username] %>'s Bookshelf</h2>
 <hr>
   <% @pics.each do |pic| %>
       <img src="<%= pic %>"/>

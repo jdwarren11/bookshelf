@@ -79,6 +79,7 @@ post '/signup' do
   result = BOOK::SignUp.run(params)
   if result[:success?]
     session[:user_id] = result[:user_id]
+    session[:username] = result[:username]
     redirect to '/'
   else
     'user does not exist'
@@ -89,6 +90,7 @@ post '/signin' do
   result = BOOK::SignIn.run(params)
   if result[:success?]
     session[:user_id] = result[:user_id]
+    session[:username] = result[:username]
     redirect to '/'
   else
     redirect to '/'
