@@ -13,6 +13,11 @@ h1, h2, h3, h5, span {
     margin-top: 1.5rem;
     font-size: 4rem;
 }
+#top img {
+    width: 100px;
+    padding: 0;
+    margin: 0;
+}
 
 .row.main {
     margin-top: 3rem;
@@ -25,4 +30,3 @@ h1, h2, h3, h5, span {
     font-family: "Futura";
     color: black;
 }
-

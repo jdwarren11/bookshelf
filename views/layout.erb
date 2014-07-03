@@ -8,12 +8,12 @@
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.3.0/js/foundation.min.js"></script>
     <link rel="stylesheet" href="../css/style.css" type="text/css" />
     <style type="text/css">
-      * {
+/*      * {
         border: 1px solid red;
         -moz-box-sizing: border-box;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
-      }
+      }*/
     </style>
   </head>
   <body>
@@ -22,11 +22,12 @@
         <%= yield %>
 <!--       </div> -->
     </section>
-    <section class="row">
+    <hr>
+    <!-- <section class="row">
       <div>
-        <%= erb :bookshelf %>
+        <%#= erb :bookshelf %>
       </div>
-    </section>
+    </section> -->
     <script>$(document).foundation();</script>
   </body>
 </html>
