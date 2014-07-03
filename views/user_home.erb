@@ -1,24 +1,48 @@
 <!-- I AM @BOOK: <%= @book %> -->
-    
-<img src="<%= @book[:picture] %>"/>
-<h3><%= @book[:title] %></h3>
-<% @book[:authors].each do |author| %>
-<h5><%= author %></h5>
-<% end %> 
+<hr>
+<div class="row main">
+  <div class="large-6 large-centered text-center columns">
+    <div class="row swipe">
+      <div class="large-4 columns">
+        <form method='post' action='/'>
+          <input type='hidden' value='<%= @api_id %>' name='api_id'>
+          <input type='hidden' value='<%= @title %>' name='title'>
+          <input type='hidden' value='<%= @category %>' name='category'>
+          <input type='hidden' value='<%= @authors %>' name='authors'>
+          <input type='hidden' value='<%= @picture %>' name='picture'>
+          <button type='submit' class="button large round like" name="interest" value="false">NO</button>
+      </div>
+      <div class="large-4 columns">
+        <img src="<%= @book[:picture] %>"/>
+      </div>
+      <div class="large-4 columns">
+        <button type='submit' class="button large round like" name="interest" value="true" >YES</button>
+      </form>
+      </div>
+    </div>
+    <h3><%= @title %></h3>
+    <% if @authors != nil %>
+      <% @authors.each do |author| %>
+          <h5><%= author %></h5>
+      <% end %>
+    <% end %> 
+  </div>
+</div>
 
 </br>
 <hr>
 </br>
 
-<form method='post' action='/'>
+<!-- <form method='post' action='/'>
   <input type='hidden' value='<%= @api_id %>' name='api_id'>
   <input type='hidden' value='<%= @title %>' name='title'>
   <input type='hidden' value='<%= @category %>' name='category'>
   <input type='hidden' value='<%= @authors %>' name='authors'>
   <input type='hidden' value='<%= @picture %>' name='picture'>
-  <input type='radio' name="interest" value="true">Yes
-  <input type='radio' name="interest" value="false">No
-  <input type='submit' class="button">
-</form>
 
-<!--  I AM PARAMS: <%= params %> -->
+    <button type='submit' class="button" name="interest" value="false">I no like</button>
+    <button type='submit' class="button" name="interest" value="true" >I like</button>
+
+</form> -->
+
+<!--  I AM PARAMS: <%= params %>
