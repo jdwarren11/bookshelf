@@ -8,17 +8,20 @@
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/foundation/5.3.0/js/foundation.min.js"></script>
     <!-- <link rel="stylesheet" href="../css/style.css" type="text/css" /> -->
     <style type="text/css">
-     /* * {
+      * {
         border: 1px solid red;
         -moz-box-sizing: border-box;
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
-      }*/
-      /* You will put the rest of the styles here */
+      }
     </style>
   </head>
   <body>
-    
+
+    <header class="row">
+      <%= erb :header %>
+    </header>
+
     <section class="row">
       <div>
           <%= yield %>

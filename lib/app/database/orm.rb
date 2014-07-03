@@ -14,8 +14,8 @@ module BOOK
       @db.exec(%Q[
         CREATE TABLE IF NOT EXISTS users (
           id serial NOT NULL PRIMARY KEY,          
-          name VARCHAR(30),
-          username VARCHAR(30),
+          name text,
+          username text,
           password_digest VARCHAR(100),
           score integer
         )])
@@ -28,11 +28,11 @@ module BOOK
 
       @db.exec(%Q[
         CREATE TABLE IF NOT EXISTS books (
-          id serial NOT NULL PRIMARY KEY,
-          api_id VARCHAR(20),
+          id serial NOT NULL,
+          api_id text PRIMARY KEY,
           category integer references categories(id),
-          title varchar(30),
-          author varchar(30),
+          title text,
+          author text,
           photo text
           )])
 
@@ -40,10 +40,31 @@ module BOOK
         CREATE TABLE IF NOT EXISTS bookshelf (
           user_id integer references users(id),
           category integer references categories(id),
-          book_id integer references books(id),
+          api_id text,
           interest boolean
           )])
     end
+
+# ============================================================
+#           SCRIPTS
+# ============================================================
+    def add_user_result(u_id, category, api_id, interest)
+      @db.exec_params(%Q[
+        INSERT INTO bookshelf(user_id, category, api_id, interest)
+        VALUES ($1, $2, $3, $4)
+        ], [u_id, category, api_id, interest])
+    end
+
+    def get_user_bookshelf_by_id(user_id)
+      response = @db.exec_params(%Q[
+        SELECT * FROM bookshelf
+        WHERE id = #{user_id};
+        ])
+
+    end
+
+
+
 
 
 # ============================================================
@@ -68,12 +89,27 @@ module BOOK
 # ============================================================
 #             BOOKS
 # ============================================================
-    def create_book(b_id, cat, title, author, photo)
+    def create_book(api_id, cat, title, author, photo)
       response = @db.exec_params(%Q[
-        INSERT INTO books(book_id, category, title, author, photo)
+        INSERT INTO books(api_id, category, title, author, photo)
         VALUES ($1, $2, $3, $4, $5)
         RETURNING id;
-        ], [b_id, cat, title, author, photo])
+        ], [api_id, cat, title, author, photo])
+      response.first["id"]
+    end
+
+    def check_book(id)
+      response = @db.exec_params(%Q[
+        SELECT * FROM books
+        WHERE api_id = ($1);
+        ], [id])
+      if response.num_tuples.zero?
+        return false
+      else
+        # binding.pry
+        book = response.first
+        BOOK::Books.new(book['api_id'],book['category'].to_i,book['title'],book['author'],book['photo'])
+      end
     end
 
 

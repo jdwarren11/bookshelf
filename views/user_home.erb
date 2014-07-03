@@ -1,15 +1,17 @@
-<form method='post' action='/signout'>
-  <input type='submit' class="button" value='Logout'>
-</form>
-
-I AM @BOOK: <%= @book %>
+<!-- I AM @BOOK: <%= @book %> -->
+    
+<img src="<%= @book[:picture] %>"/>
+<h3><%= @book[:title] %></h3>
+<% @book[:authors].each do |author| %>
+<h5><%= author %></h5>
+<% end %> 
 
 </br>
 <hr>
 </br>
 
 <form method='post' action='/'>
-  <input type='hidden' value='<%= @id %>' name='id'>
+  <input type='hidden' value='<%= @api_id %>' name='api_id'>
   <input type='hidden' value='<%= @title %>' name='title'>
   <input type='hidden' value='<%= @category %>' name='category'>
   <input type='hidden' value='<%= @authors %>' name='authors'>
@@ -19,8 +21,4 @@ I AM @BOOK: <%= @book %>
   <input type='submit' class="button">
 </form>
 
-</br>
-<hr>
-</br>
-
- I AM PARAMS: <%= params %>
+<!--  I AM PARAMS: <%= params %> -->

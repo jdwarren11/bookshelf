@@ -1,17 +1,19 @@
 module BOOK
   class Books
+    attr_reader :api_id, :category, :title, :authors, :photo, :id
 
 
-    def initialize(book_id, category, title, author, photo, id=nil)
+    def initialize(api_id, category, title, authors, photo, id=nil)
       @id = id
+      @api_id = api_id
       @category = category
       @title = title
-      @author = author
+      @authors = authors
       @photo = photo
     end
 
     def create!
-      id_from_db = BOOK.orm.create_book(@book_id, @category, @title, @author, @photo)
+      id_from_db = BOOK.orm.create_book(@api_id, @category, @title, @authors, @photo)
       @id = id_from_db
       self
     end

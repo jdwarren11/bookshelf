@@ -13,11 +13,22 @@ get '/' do
 
     # Display BOOK
     @book = BOOK::API.run
-    @id = @book[:id]
+    @api_id = @book[:id]
     @title = @book[:title]
     @category = @book[:category]
     @authors = @book[:authors]
     @picture = @book[:picture]
+
+    # binding.pry
+
+    # new_book = BOOK::NewBook.run(@book)
+    check = BOOK.orm.check_book(@api_id)
+    if !check
+      new_book = BOOK::Books.new(@api_id, @category, @title, @authors, @picture)
+      new_book.create!
+    end
+
+
 
     # user chooses
 
@@ -34,9 +45,21 @@ end
 
 post '/' do
   if session[:user_id]
-    
+    @book = BOOK::API.run
+    @api_id = @book[:id]
+    @title = @book[:title]
+    @category = @book[:category]
+    @authors = @book[:authors]
+    @picture = @book[:picture]
 
-    erb :user_home
+    result = BOOK::AddInterest.run(params, session)
+    # @user_id = session[:user_id]
+
+
+
+    
+    redirect to '/'
+    # erb :user_home
   else
     erb :sign_in
   end
